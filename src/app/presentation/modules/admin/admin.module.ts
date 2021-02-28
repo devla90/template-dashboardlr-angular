@@ -12,7 +12,9 @@ import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [
+    AdminComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
