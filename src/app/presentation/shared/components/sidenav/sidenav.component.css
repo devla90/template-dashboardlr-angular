@@ -12,3 +12,6 @@
   object-fit: cover;
   border-radius: 50%;
 }
+.active-list-item {
+  color: #3F51B5 !important;
+}

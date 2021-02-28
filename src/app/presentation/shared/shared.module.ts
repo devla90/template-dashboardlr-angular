@@ -13,6 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatDividerModule,
     MatSidenavModule,
     MatCardModule,
