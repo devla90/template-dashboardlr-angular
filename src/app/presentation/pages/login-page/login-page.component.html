@@ -1,24 +1,45 @@
-<div class="login-page">
-    <mat-card>
-        <mat-card-title>
-            Login
-        </mat-card-title>
-        <mat-card-content>
-            <form (keyup.enter)="login(email, password)">
-                <mat-form-field class="login-field">
-                    <input matInput placeholder="Email" name="email" [(ngModel)]="email" type="email" autocomplete="username email"/>
-                </mat-form-field>
-                <mat-form-field class="login-field">
-                    <input matInput placeholder="Password" name="password" [(ngModel)]="password" type="password" autocomplete="current-password"/>
-                </mat-form-field>
-            </form>
-            <mat-error [textContent]="errorMessage"></mat-error>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary"
-                    class="login-field" (click)="login(email, password)" type="submit">
-                Login
-            </button>
-        </mat-card-actions>
-    </mat-card>
+<div class="wrapper"
+     fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="center">
+  <div class="login-card mat-elevation-z8">
+    <main class="login-content"
+          fxLayout="column"
+          fxLayoutAlign="center center">
+      <span class="login-header">Login</span>
+      
+      <form [formGroup]="form" class="login-form align-items-center" fxLayout="column" (ngSubmit)="login($event)">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Type your email" type="email" formControlName='email'>
+          <mat-icon class ="input-icon" matPrefix>mail_outline</mat-icon>
+          <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="form.controls.email.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Type your password" type="password" formControlName='password'>
+          <mat-icon class ="input-icon" matPrefix>lock_outline</mat-icon>
+          <mat-error *ngIf="form.controls.password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="warn" type="submit">Ingresar</button>
+      </form>
+      <div>
+        <a class="forgot-link" routerLink="/forgot-password">forgot password?</a>
+      </div>
+    </main>
+
+  </div>
+  <div class="login-card login-content mat-elevation-z8" 
+          [ngStyle]="unsplashClass()">
+      <div class="login-aside-overlay"></div>
+      <h1 class="login-welcome-text">Welcome!</h1>
+      <hr class="login-aside-hr">
+  </div>
 </div>
